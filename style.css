@@ -15,6 +15,7 @@ html {
 
 Body {
   font-size: 1.6rem;
+  overflow-x: hidden;
 }
 
 *,
@@ -45,18 +46,60 @@ a {
 .verde {
   color: var(--verde);
 }
+
 .rojo {
   color: var(--rojo);
 }
+
 .ocultar {
   display: none;
+
 }
+
+.btn-cerrar {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--blanco);
+  position: absolute;
+  top: 0;
+  right: 5rem;
+  cursor: pointer;
+  user-select: none;
+
+}
+
+.pantalla-completa {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .5);
+  z-index: 4;
+}
+
+@keyframes desplazamiento {
+  0% {
+    transform: translateX(100%);
+  }
+
+  1000% {
+    transform: translateX(0);
+  }
+}
+
+/* .btn-cerrar:hover {
+  cursor: pointer;
+} */
 
 /* --- Encabezado --------------------------- */
 
 .contenedor-navegacion {
   background-color: var(--oscuro);
+  position: relative;
+  z-index: 5;
 }
+
 .contenido-navegacion {
   display: flex;
   align-items: center;
@@ -68,11 +111,43 @@ a {
   font-size: 3rem;
 }
 
+.navegacion {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 40rem;
+  padding: 3rem 4rem;
+  background-color: var(--oscuro);
+  animation: desplazamiento 0.7s ease-in-out;
+}
+
 .navegacion a {
   color: var(--blanco);
   text-decoration: none;
   font-size: 2rem;
-  padding: 1rem;
+  padding: 1.5rem;
+  display: block;
+  transition: color 0.3s ease-in-out;
 }
+
+.navegacion a:nth-child(even):hover {
+  color: var(--rojo);
+}
+
+.navegacion a:nth-child(odd):hover {
+  color: var(--verde);
+}
+
+.navegacion a:first-of-type {
+  margin-top: 3rem;
+}
+
 .hamburguesa span {
+  background: var(--blanco);
+  display: block;
+  width: 5rem;
+  height: 0.5rem;
+  margin: 0.7rem 0;
 }
