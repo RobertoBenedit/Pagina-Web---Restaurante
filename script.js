@@ -30,6 +30,7 @@ const botonCerrar = () => {
   const btnCerrar = document.createElement("p"); //crea el <p>
   btnCerrar.textContent = "X"; //Le agrega de texto "x"
   btnCerrar.classList.add("btn-cerrar"); //Le agrega la clase "btn-cerrar"
+
   navegacion.appendChild(btnCerrar); // Le agrega el <p > al <div> con la clase "navegacion"
 
   //  PARTE 2: Cierra el menu
@@ -53,6 +54,7 @@ const cerrarMenu = (boton, overlay) => {
     // Le agrega al parametro boton, un event listener click
     navegacion.classList.add("ocultar"); //Agrega la clase "ocultar al div "navegacion"
     overlay.remove(); //Remueve el div "overlay"
+    boton.remove();
   });
 
   //  Parte 2: Borra el menu al hacer click en la pantalla
@@ -60,6 +62,7 @@ const cerrarMenu = (boton, overlay) => {
   overlay.onclick = function () {
     overlay.remove();
     navegacion.classList.add("ocultar");
+    boton.remove();
   };
 };
 
