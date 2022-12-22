@@ -62,11 +62,13 @@ a {
   color: var(--blanco);
   position: absolute;
   top: 0;
-  right: 5rem;
-  cursor: pointer;
+  right: 50px;
   -webkit-user-select: none;
   user-select: none;
+}
 
+.btn-cerrar:hover {
+  cursor: pointer;
 }
 
 .pantalla-completa {
