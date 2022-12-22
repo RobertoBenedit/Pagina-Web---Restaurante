@@ -43,6 +43,10 @@ a {
   font-family: var(--parrafos);
 }
 
+img {
+  max-width: 100% ;
+}
+
 .verde {
   color: var(--verde);
 }
@@ -252,4 +256,10 @@ video {
   width: 100%;
   height: 100%;
   /* opacity: .7; */
+}
+
+/* --- Sobre Nosotros --------------------------- */
+
+.contenedor-nosotros {
+   
 }
