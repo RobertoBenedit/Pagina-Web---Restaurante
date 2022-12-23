@@ -1,30 +1,31 @@
-// Selecciona el elemento con la clase "hamburguesa" y el elemento con la clase "navegación"
+const menu = document.querySelector(".hamburguesa"); // Selecciona la clase hamburguesa
+const navegacion = document.querySelector(".navegacion"); // selecciona la clase navegacion
 
-const menu = document.querySelector(".hamburguesa");
-const navegacion = document.querySelector(".navegacion");
+const imagenes = document.querySelectorAll("img"); // Selecciona todas las imagenes
 
-// Cuando el DOM esté cargado, ejecuta la función "eventos"
+imagenes.forEach((imagen) => {
+  // asigna el valor de dataset-src al src de la img a cada imagen del document
+  imagen.src = imagen.dataset.src;
+});
 
 document.addEventListener("DOMContentLoaded", () => {
+  //Ejecuta el codigo que esta dentro una vez que carga todo el dom
   eventos();
 });
 
-// Función que añade un evento al elemento "menu" para ejecutar la función "abrirMenu" cuando se haga clic
-
 const eventos = () => {
+  // Función que añade un evento al elemento "menu" para ejecutar la función "abrirMenu" cuando se haga clic
   menu.addEventListener("click", abrirMenu);
 };
 
-// Función que elimina la clase "ocultar" del elemento "navegación" y ejecuta la función "botonCerrar"
-
 const abrirMenu = () => {
+  // Función que elimina la clase "ocultar" del elemento "navegación" y ejecuta la función "botonCerrar"
   navegacion.classList.remove("ocultar");
   botonCerrar();
 };
 
-// Función que crea un elemento "p" y un elemento "div" con la clase "pantalla-completa", y los añade al "body". También agrega la clase "btn-cerrar" al elemento "p" y lo añade al elemento "navegación"y por ultimo lo agrega al div "navegacion"
-
 const botonCerrar = () => {
+  // Función que crea un elemento "p" y un elemento "div" con la clase "pantalla-completa", y los añade al "body". También agrega la clase "btn-cerrar" al elemento "p" y lo añade al elemento "navegación"y por ultimo lo agrega al div "navegacion"
   //  PARTE 1: Agrega boton de cerrar
 
   const btnCerrar = document.createElement("p"); //crea el <p>
@@ -45,9 +46,9 @@ const botonCerrar = () => {
   cerrarMenu(btnCerrar, overlay); // Llama a la funcion cerrarMenu que agrega al div "navegacion" la clase "ocultar"
 };
 
-// Función que añade eventos a los elementos "boton" y "overlay" para ocultar el elemento "navegación" y eliminar el elemento "overlay" cuando se haga clic en ellos
-
 const cerrarMenu = (boton, overlay) => {
+  // Función que añade eventos a los elementos "boton" y "overlay" para ocultar el elemento "navegación" y eliminar el elemento "overlay" cuando se haga clic en ellos
+
   //  PARTE 1: borra el menu al hacer click en el boton
 
   boton.addEventListener("click", () => {
@@ -79,3 +80,4 @@ const cerrarMenu = (boton, overlay) => {
 // La séptima línea añade el elemento "p" (con la clase "btn-cerrar") como hijo del elemento "navegacion".
 // La octava línea llama a la función "cerrarMenu" y le pasa como argumentos el elemento "p" y el elemento "div".
 // La novena línea define la función "cerrarMenu", que establece un evento "click" en el elemento "p" (el botón de cierre) y elimina el elemento "div" (la pantalla completa) y agrega la clase "ocultar" al elemento "navegación" (para ocultarlo) cuando se hace clic en el botón. También establece un evento "onclick" en el elemento "div" (la pantalla completa) que tiene el mismo efecto cuando se hace clic en él.
+
