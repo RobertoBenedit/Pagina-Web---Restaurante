@@ -97,12 +97,6 @@ img {
   font-family: var(--parrafos);
 }
 
-.btn-verde:hover {
-  background-color: var(--rojo);
-  transition: .5s ease-in-out;
-  font-weight: bold;
-}
-
 
 .btn-rojo:hover {
   background-color: var(--verde);

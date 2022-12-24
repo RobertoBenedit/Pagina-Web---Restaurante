@@ -1,12 +1,7 @@
 const menu = document.querySelector(".hamburguesa"); // Selecciona la clase hamburguesa
 const navegacion = document.querySelector(".navegacion"); // selecciona la clase navegacion
+
 const imagenes = document.querySelectorAll("img"); // Selecciona todas las imagenes
-const btnTodos = document.querySelector(".todos");
-const btnEnsaladas = document.querySelector(".ensaladas");
-const btnPastas = document.querySelector(".pastas");
-const btnPizzas = document.querySelector(".pizzas");
-const btnPostres = document.querySelector(".postres");
-const contenedorPlatillos = document.querySelector(".platillos");
 
 const observer = new IntersectionObserver((entries, observer) => {
   entries.forEach((entry) => {
@@ -18,7 +13,8 @@ const observer = new IntersectionObserver((entries, observer) => {
 });
 
 imagenes.forEach((imagen) => {
-  imagen.src = imagen.dataset.src; // asigna el valor de dataset-src al src de la img a cada imagen del document
+  
+  imagen.src = imagen.dataset.src;// asigna el valor de dataset-src al src de la img a cada imagen del document
 
   observer.observe(imagen); // Ejecuta el la funcion observer
 });
@@ -26,7 +22,6 @@ imagenes.forEach((imagen) => {
 document.addEventListener("DOMContentLoaded", () => {
   //Ejecuta el codigo que esta dentro una vez que carga todo el dom
   eventos();
-  platillos();
 });
 
 const eventos = () => {
