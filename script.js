@@ -13,8 +13,7 @@ const observer = new IntersectionObserver((entries, observer) => {
 });
 
 imagenes.forEach((imagen) => {
-  
-  imagen.src = imagen.dataset.src;// asigna el valor de dataset-src al src de la img a cada imagen del document
+  imagen.src = imagen.dataset.src; // asigna el valor de dataset-src al src de la img a cada imagen del document
 
   observer.observe(imagen); // Ejecuta el la funcion observer
 });
@@ -22,6 +21,7 @@ imagenes.forEach((imagen) => {
 document.addEventListener("DOMContentLoaded", () => {
   //Ejecuta el codigo que esta dentro una vez que carga todo el dom
   eventos();
+  platillos();
 });
 
 const eventos = () => {
@@ -76,6 +76,11 @@ const cerrarMenu = (boton, overlay) => {
     navegacion.classList.add("ocultar");
     boton.remove();
   };
+};
+
+const platillos = () => {
+  const platillos = document.querySelector(".platillo");
+  consolo.log(platillos);
 };
 
 // Este código es parte de un menú de navegación que se despliega al hacer clic en un elemento con la clase "hamburguesa" y se cierra al hacer clic en un botón con la clase "btn-cerrar" o en un elemento con la clase "pantalla-completa".
