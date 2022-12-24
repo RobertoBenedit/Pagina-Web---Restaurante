@@ -435,4 +435,5 @@ video {
   border: none;
   background-color: var(--rojo);
   color: var(--blanco);
+  height: 3.8rem;
 }

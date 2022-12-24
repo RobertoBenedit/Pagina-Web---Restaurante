@@ -13,13 +13,12 @@ const observer = new IntersectionObserver((entries, observer) => {
     if (entry.isIntersecting) {
       const imagen = entry.target;
       observer.unobserve(imagen);
+      imagen.src = imagen.dataset.src; // asigna el valor de dataset-src al src de la img a cada imagen del document
     }
   });
 });
 
 imagenes.forEach((imagen) => {
-  imagen.src = imagen.dataset.src; // asigna el valor de dataset-src al src de la img a cada imagen del document
-
   observer.observe(imagen); // Ejecuta el la funcion observer
 });
 
@@ -137,6 +136,35 @@ const mostrarPlatillos = (todos, ensaladas, pastas, pizzas, postres) => {
   });
 
   btnPostres.addEventListener("click", () => {
+    limpiarHTML(contenedorPlatillos);
+    postres.forEach((postre) => contenedorPlatillos.appendChild(postre));
+  });
+
+  // mobile
+
+  btnTodos.addEventListener("touchstart", () => {
+    limpiarHTML(contenedorPlatillos);
+    todos.forEach((todo) => {
+      contenedorPlatillos.appendChild(todo);
+    });
+  });
+
+  btnEnsaladas.addEventListener("touchstart", () => {
+    limpiarHTML(contenedorPlatillos);
+    ensaladas.forEach((ensalada) => contenedorPlatillos.appendChild(ensalada));
+  });
+
+  btnPastas.addEventListener("touchstart", () => {
+    limpiarHTML(contenedorPlatillos);
+    pastas.forEach((pasta) => contenedorPlatillos.appendChild(pasta));
+  });
+
+  btnPizzas.addEventListener("touchstart", () => {
+    limpiarHTML(contenedorPlatillos);
+    pizzas.forEach((pizza) => contenedorPlatillos.appendChild(pizza));
+  });
+
+  btnPostres.addEventListener("touchstart", () => {
     limpiarHTML(contenedorPlatillos);
     postres.forEach((postre) => contenedorPlatillos.appendChild(postre));
   });
