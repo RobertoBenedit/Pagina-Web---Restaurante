@@ -1,7 +1,12 @@
 const menu = document.querySelector(".hamburguesa"); // Selecciona la clase hamburguesa
 const navegacion = document.querySelector(".navegacion"); // selecciona la clase navegacion
-
 const imagenes = document.querySelectorAll("img"); // Selecciona todas las imagenes
+const btnTodos = document.querySelector(".todos");
+const btnEnsaladas = document.querySelector(".ensaladas");
+const btnPastas = document.querySelector(".pastas");
+const btnPizzas = document.querySelector(".pizzas");
+const btnPostres = document.querySelector(".postres");
+const contenedorPlatillos = document.querySelector(".platillos");
 
 const observer = new IntersectionObserver((entries, observer) => {
   entries.forEach((entry) => {
@@ -13,8 +18,7 @@ const observer = new IntersectionObserver((entries, observer) => {
 });
 
 imagenes.forEach((imagen) => {
-  
-  imagen.src = imagen.dataset.src;// asigna el valor de dataset-src al src de la img a cada imagen del document
+  imagen.src = imagen.dataset.src; // asigna el valor de dataset-src al src de la img a cada imagen del document
 
   observer.observe(imagen); // Ejecuta el la funcion observer
 });
@@ -22,6 +26,7 @@ imagenes.forEach((imagen) => {
 document.addEventListener("DOMContentLoaded", () => {
   //Ejecuta el codigo que esta dentro una vez que carga todo el dom
   eventos();
+  platillos();
 });
 
 const eventos = () => {
@@ -77,6 +82,83 @@ const cerrarMenu = (boton, overlay) => {
     boton.remove();
   };
 };
+
+const platillos = () => {
+  let platillosArreglo = [];
+  // const platillos = document.getElementsByClassName(".platillo");
+  const platillos = document.querySelectorAll(".platillo");
+
+  platillos.forEach((platillo) => {
+    platillosArreglo = [...platillosArreglo, platillo];
+  });
+
+  const ensaladas = platillosArreglo.filter(
+    (ensalada) => ensalada.getAttribute("data-platillo") === "ensalada"
+  );
+  const pastas = platillosArreglo.filter(
+    (pasta) => pasta.getAttribute("data-platillo") === "pasta"
+  );
+  const pizzas = platillosArreglo.filter(
+    (pizza) => pizza.getAttribute("data-platillo") === "pizza"
+  );
+  const postres = platillosArreglo.filter(
+    (postre) => postre.getAttribute("data-platillo") === "postre"
+  );
+
+  mostrarPlatillos(platillosArreglo, ensaladas, pastas, pizzas, postres);
+
+  console.log(ensaladas);
+  console.log(pastas);
+  console.log(pizzas);
+  console.log(postres);
+};
+
+const mostrarPlatillos = (todos, ensaladas, pastas, pizzas, postres) => {
+  btnTodos.addEventListener("click", () => {
+    limpiarHTML(contenedorPlatillos);
+    todos.forEach((todo) => {
+      contenedorPlatillos.appendChild(todo);
+    });
+  });
+
+  btnEnsaladas.addEventListener("click", () => {
+    limpiarHTML(contenedorPlatillos);
+    ensaladas.forEach((ensalada) => contenedorPlatillos.appendChild(ensalada));
+  });
+
+  btnPastas.addEventListener("click", () => {
+    limpiarHTML(contenedorPlatillos);
+    pastas.forEach((pasta) => contenedorPlatillos.appendChild(pasta));
+  });
+
+  btnPizzas.addEventListener("click", () => {
+    limpiarHTML(contenedorPlatillos);
+    pizzas.forEach((pizza) => contenedorPlatillos.appendChild(pizza));
+  });
+
+  btnPostres.addEventListener("click", () => {
+    limpiarHTML(contenedorPlatillos);
+    postres.forEach((postre) => contenedorPlatillos.appendChild(postre));
+  });
+};
+
+const limpiarHTML = (contenedor) => {
+  while (contenedor.firstChild) {
+    contenedor.removeChild(contenedor.firstChild);
+  }
+};
+
+// Codigo de ChatGTP:
+// const platillos = () => {
+//   let platillosArreglo = [];
+//   const platillos = document.getElementsByClassName("platillo");
+//   platillosArreglo = platillosArreglo.concat(Array.from(platillos));
+//   const ensaladas = Array.from(platillos).filter((ensalada) =>
+//     ensalada.getAttribute("data-platillo") === "ensalada"
+//   );
+
+//   console.log(ensaladas);
+// };
 
 // Este código es parte de un menú de navegación que se despliega al hacer clic en un elemento con la clase "hamburguesa" y se cierra al hacer clic en un botón con la clase "btn-cerrar" o en un elemento con la clase "pantalla-completa".
 
