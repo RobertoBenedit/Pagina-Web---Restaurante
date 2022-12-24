@@ -3,9 +3,20 @@ const navegacion = document.querySelector(".navegacion"); // selecciona la clase
 
 const imagenes = document.querySelectorAll("img"); // Selecciona todas las imagenes
 
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const imagen = entry.target;
+      observer.unobserve(imagen);
+    }
+  });
+});
+
 imagenes.forEach((imagen) => {
-  // asigna el valor de dataset-src al src de la img a cada imagen del document
-  imagen.src = imagen.dataset.src;
+  
+  imagen.src = imagen.dataset.src;// asigna el valor de dataset-src al src de la img a cada imagen del document
+
+  observer.observe(imagen); // Ejecuta el la funcion observer
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -80,4 +91,3 @@ const cerrarMenu = (boton, overlay) => {
 // La séptima línea añade el elemento "p" (con la clase "btn-cerrar") como hijo del elemento "navegacion".
 // La octava línea llama a la función "cerrarMenu" y le pasa como argumentos el elemento "p" y el elemento "div".
 // La novena línea define la función "cerrarMenu", que establece un evento "click" en el elemento "p" (el botón de cierre) y elimina el elemento "div" (la pantalla completa) y agrega la clase "ocultar" al elemento "navegación" (para ocultarlo) cuando se hace clic en el botón. También establece un evento "onclick" en el elemento "div" (la pantalla completa) que tiene el mismo efecto cuando se hace clic en él.
-
